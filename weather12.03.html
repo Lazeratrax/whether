@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .section-selector {
+            display: flex;
+            flex-direction: column;
+            padding: 3em;
+            margin: 3em;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: #cecece;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .selectRegion, .regionButton, .selectCity, .cityButton {
+            width: 300px;
+        }
+
+        .section-forecast {
+            margin: 0 auto;
+            max-width: 1140px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+           justify-content: space-between;
+        }
+
+        .section-forecast__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 140px;
+            padding: 1em;
+            margin: 0;
+            border-radius: 10px;
+            border: 3px solid green;
+            font-size: 1.3em;
+        }
+
+        .city-name {
+            font-weight: bold;
+            font-size: 2em;
+            border-bottom: 1px solid grey;
+        }
+
+        .section-forecast__item p {
+            margin: 0.5em;
+        }
+
+        .clouds {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<section class="section-selector">
+    <select class="selectRegion">
+
+    </select>
+    <input class="regionButton" type="button" value="Выбрать"><br>
+    <select class="selectCity" disabled>
+    </select>
+    <input class="cityButton" type="button" value="Показать информаци по городу">
+</section>
+
+<section class="section-forecast">
+    <!---1--->
+    <div class="section-forecast__item">
+        <h4 class="city-name city-name_one"></h4>
+        <p class="temperature temperature_one"></p>
+        <p class="clouds clouds_one"></p>
+        <div class="icon-weather icon-weather_one"></div>
+        <p class="wind wind_one"></p>
+    </div>
+    <!---2--->
+    <div class="section-forecast__item">
+        <h4 class="city-name city-name_two"></h4>
+        <p class="temperature temperature_two"></p>
+        <p class="clouds clouds_two"></p>
+        <div class="icon-weather icon-weather_two"></div>
+        <p class="wind wind_two"></p>
+    </div>
+    <!---3--->
+    <div class="section-forecast__item">
+        <h4 class="city-name city-name_three"></h4>
+        <p class="temperature temperature_three"></p>
+        <p class="clouds clouds_three"></p>
+        <div class="icon-weather icon-weather_three"></div>
+        <p class="wind wind_three"></p>
+    </div>
+    <!---4--->
+    <div class="section-forecast__item">
+        <h4 class="city-name city-name_four"></h4>
+        <p class="temperature temperature_four"></p>
+        <p class="clouds clouds_four"></p>
+        <div class="icon-weather icon-weather_four"></div>
+        <p class="wind wind_four"></p>
+    </div>
+    <!---5--->
+    <div class="section-forecast__item">
+        <h4 class="city-name city-name_five"></h4>
+        <p class="temperature temperature_five"></p>
+        <p class="clouds clouds_five"></p>
+        <div class="icon-weather icon-weather_five"></div>
+        <p class="wind wind_five"></p>
+    </div>
+
+</section>
+
+<script>
+
+    // const data = `https://gist.githubusercontent.com/alex-oleshkevich/6946d85bf075a6049027306538629794/raw/3986e8e1ade2d4e1186f8fee719960de32ac6955/by-cities.json`;
+    // .then(function (response) {
+    //     const cityId = data.response.json();
+    // }
+
+    // https://pro.openweathermap.org/data/2.5/climate/month?id=2643743&appid={YOUR API KEY}
+    // fetch(`https://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=f9d201d552071275ea89b4b295f14402`)
+
+    
+    fetch(`https://pro.openweathermap.org/data/2.5/climate/month?id=2643743&appid=f9d201d552071275ea89b4b295f14402`)
+        // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${state}&appid=f9d201d552071275ea89b4b295f14402`)
+        // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityId}&appid=f9d201d552071275ea89b4b295f14402`)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            console.log(data)
+            document.querySelector('.city-name_one').textContent = data.name;
+            document.querySelector('.temperature_one').innerHTML = Math.round(data.main.temp) - 273 + '&deg;';
+            document.querySelector('.clouds_one').textContent = data.weather[0]['description'];
+            document.querySelector('.wind_one').textContent = data.wind.speed + ' м/с';
+            document.querySelector('.icon-weather_one').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+
+            document.querySelector('.city-name_two').textContent = data.name;
+            document.querySelector('.temperature_two').innerHTML = Math.round(data.main.temp) - 273 + '&deg;';
+            document.querySelector('.clouds_two').textContent = data.weather[0]['description'];
+            document.querySelector('.wind_two').textContent = data.wind.speed + ' м/с';
+            document.querySelector('.icon-weather_two').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+
+            document.querySelector('.city-name_three').textContent = data.name;
+            document.querySelector('.temperature_three').innerHTML = Math.round(data.main.temp) - 273 + '&deg;';
+            document.querySelector('.clouds_three').textContent = data.weather[0]['description'];
+            document.querySelector('.wind_three').textContent = data.wind.speed + ' м/с';
+            document.querySelector('.icon-weather_three').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+
+            document.querySelector('.city-name_four').textContent = data.name;
+            document.querySelector('.temperature_four').innerHTML = Math.round(data.main.temp) - 273 + '&deg;';
+            document.querySelector('.clouds_four').textContent = data.weather[0]['description'];
+            document.querySelector('.wind_four').textContent = data.wind.speed + ' м/с';
+            document.querySelector('.icon-weather_four').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+
+            document.querySelector('.city-name_five').textContent = data.name;
+            document.querySelector('.temperature_five').innerHTML = Math.round(data.main.temp) - 273 + '&deg;';
+            document.querySelector('.clouds_five').textContent = data.weather[0]['description'];
+            document.querySelector('.wind_five').textContent = data.wind.speed + ' м/с';
+            document.querySelector('.icon-weather_five').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
+        })
+        .catch(function () {
+//err
+        })
+</script>
+
+</body>
+</html>
