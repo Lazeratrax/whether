@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        .selectRegion option {
+            font-size: 25px;
+            background-color: #3bb0e2;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="menu">
+    <div class="group">
+        <p class="hint">Выберите область:</p>
+        <div id="content">
+            <div class="select-wrapper">
+                <div class="select-arrow-3"></div>
+                <div class="select-arrow-3"></div>
+                <select class="selectRegion">
+                    <option value="">выберите область</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="group">
+        <div id="">
+            <div class="select-wrapper select-wrapper-2">
+                <div class="select-arrow-3"></div>
+                <div class="select-arrow-3"></div>
+                <select class="selectCity" disabled>
+                    <option value="">выберите населенный пункт</option>
+                </select>
+            </div>
+        </div>
+        <a href="#" class="btn-2 cityButton" id="btn-2" onkeypress="return runWeather(event)">Показать погоду</a>
+    </div>
+</div>
+
+<script src="moment.js"></script>
+<script src="index.js"></script>
+<script>
+
+</script>
+
+</body>
+
+</html>
